@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DvdsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get('/dvds/novo', 'DvdsController@create');
+
+#Rota de acesso ao formulario
+Route::get('/dvds/novo', 'App\Http\Controllers\DvdsController@create');
+
+#Rota de Post para o formulario
+Route::post('/dvds/novo', 'App\Http\Controllers\DvdsController@store')->name('registrar_dvd');
