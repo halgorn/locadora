@@ -26,8 +26,8 @@ Route::get('/dvds/novo', 'App\Http\Controllers\DvdsController@create');
 #Rota de Post para o formulario
 Route::post('/dvds/novo', 'App\Http\Controllers\DvdsController@store')->name('registrar_dvd');
 
-# Rota para leitura de formulario pelo ID
+# Rota para leitura dos dados de dvd
 Route::get('/dvds/ver', 'App\Http\Controllers\DvdsController@show');
 
-#mostrar uma lista de dvds
-#Route::get('/dvds/list','App\Http\Controllers\DvdsController@show');
+#mostrar editar por id 
+Route::get('/dvds/ver/{id}', 'App\Http\Controllers\DvdsController@excluir')->name('excluir_dvd');

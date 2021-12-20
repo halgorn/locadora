@@ -27,8 +27,11 @@ class DvdsController extends Controller
         $dvds = dvd::all();
         return view('dvds.show', ['dvds' => $dvds]);
     }
-   /* public function show (){
-        return view('list');
-    }*/
+   public function excluir($id)
+   {
+       $dvd = Dvd::findOrFail($id);
+       $dvd->delete();
+       return "Livro excluido com sucesso.";
+   }
 
 }

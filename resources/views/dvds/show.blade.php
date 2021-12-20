@@ -16,7 +16,8 @@
                 <td>{{$dvd->preco}}</td>
                 <td>{{$dvd->quantidade}}</td>
                 <td>Editar</td>
-                <td>Excluir</td>
+                <td><a href="{{ route('excluir_dvd', ['id'=>$dvd->id])}}"
+                        title="Excluir dvd {{$dvd->nome}}">Excluir</a></td>
             </tr>
         @endforeach
     </table>
