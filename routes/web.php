@@ -25,3 +25,9 @@ Route::get('/dvds/novo', 'App\Http\Controllers\DvdsController@create');
 
 #Rota de Post para o formulario
 Route::post('/dvds/novo', 'App\Http\Controllers\DvdsController@store')->name('registrar_dvd');
+
+# Rota para leitura de formulario pelo ID
+Route::get('/dvds/ver', 'App\Http\Controllers\DvdsController@show');
+
+#mostrar uma lista de dvds
+#Route::get('/dvds/list','App\Http\Controllers\DvdsController@show');
