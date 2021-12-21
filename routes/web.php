@@ -29,5 +29,11 @@ Route::post('/dvds/novo', 'App\Http\Controllers\DvdsController@store')->name('re
 # Rota para leitura dos dados de dvd
 Route::get('/dvds/ver', 'App\Http\Controllers\DvdsController@show');
 
+#mostrar excluir por id 
+Route::get('/dvds/del/{id}', 'App\Http\Controllers\DvdsController@excluir')->name('excluir_dvd');
+
 #mostrar editar por id 
-Route::get('/dvds/ver/{id}', 'App\Http\Controllers\DvdsController@excluir')->name('excluir_dvd');
+Route::get('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@edit')->name('editar_dvd');
+
+#salvar dados no edit
+Route::post('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@update')->name('atualizar_dvd');

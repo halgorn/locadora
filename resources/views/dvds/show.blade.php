@@ -15,9 +15,13 @@
                 <td>{{$dvd->legenda}}</td>
                 <td>{{$dvd->preco}}</td>
                 <td>{{$dvd->quantidade}}</td>
-                <td>Editar</td>
+                <td><a href="{{ route('editar_dvd', ['id'=>$dvd->id])}}"
+                        title="Editar dvd {{$dvd->nome}}">Editar</a>
+                </td>
+
                 <td><a href="{{ route('excluir_dvd', ['id'=>$dvd->id])}}"
-                        title="Excluir dvd {{$dvd->nome}}">Excluir</a></td>
+                        title="Excluir dvd {{$dvd->nome}}">Excluir</a>
+                </td>
             </tr>
         @endforeach
     </table>

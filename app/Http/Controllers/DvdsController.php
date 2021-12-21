@@ -33,5 +33,23 @@ class DvdsController extends Controller
        $dvd->delete();
        return "Livro excluido com sucesso.";
    }
+   public function edit($id)
+   {
+       $dvds = Dvd::findOrFail($id);
+       return view('dvds.editar', ['dvds'=> $dvds]);
+   }
 
+   public function update(Request $request, $id)
+   {
+       $dvd = Dvd::findOrFail($id);
+       $dvd->update([
+           'nome'=>$request->nome,
+           'legenda'=>$request->legenda,
+           'preco'=>$request->preco,
+           'quantidade'=>$request->quantidade
+
+       ]);
+       return "DVD alterado com sucesso";
+
+   }
 }
