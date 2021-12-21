@@ -37,3 +37,7 @@ Route::get('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@edit')->name(
 
 #salvar dados no edit
 Route::post('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@update')->name('atualizar_dvd');
+# rota para o login
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
