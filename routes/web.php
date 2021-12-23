@@ -27,7 +27,7 @@ Route::get('/dvds/novo', 'App\Http\Controllers\DvdsController@create');
 Route::post('/dvds/novo', 'App\Http\Controllers\DvdsController@store')->name('registrar_dvd');
 
 # Rota para leitura dos dados de dvd
-Route::get('/dvds/ver', 'App\Http\Controllers\DvdsController@show');
+Route::get('/dvds/ver', 'App\Http\Controllers\DvdsController@show')->name('mostrar_dvd');
 
 #mostrar excluir por id 
 Route::get('/dvds/del/{id}', 'App\Http\Controllers\DvdsController@excluir')->name('excluir_dvd');
@@ -37,7 +37,11 @@ Route::get('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@edit')->name(
 
 #salvar dados no edit
 Route::post('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@update')->name('atualizar_dvd');
+
 # rota para o login
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+#rotas para o menu laravel, quando logado
+
+Route::get('/welcome')->name('bem_vindo');
