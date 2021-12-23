@@ -44,4 +44,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 #rotas para o menu laravel, quando logado
 
-Route::get('/welcome')->name('bem_vindo');
+Route::post('/', 'App\Http\Controllers\DvdsController@home')->name('home');

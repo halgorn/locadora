@@ -52,4 +52,8 @@ class DvdsController extends Controller
        return "DVD alterado com sucesso";
 
    }
+
+   public function home(){
+       return view('welcome');
+   }
 }
