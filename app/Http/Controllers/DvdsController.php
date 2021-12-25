@@ -14,17 +14,22 @@ class DvdsController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->hasFile('imagem') && $request->imagem->isValid()){
+
+            $imagePath = $request->imagem->store('public');
+        }
         Dvd::create([
             'nome' => $request->nome,
             'legenda' => $request->legenda,
             'preco' => $request->preco,
             'quantidade' => $request->quantidade,
+            'imagem' => $imagePath
         ]);
         return "Dvd cadastrado com sucesso";
     }
     public function show()
     {
-        $dvds = dvd::all();
+        $dvds = Dvd::all();
         return view('dvds.show', ['dvds' => $dvds]);
     }
    public function excluir($id)
@@ -42,12 +47,18 @@ class DvdsController extends Controller
    public function update(Request $request, $id)
    {
        $dvd = Dvd::findOrFail($id);
+
+       if ($request->hasFile('imagem') && $request->imagem->isValid()){
+
+        $imagePath = $request->imagem->store('public');
+        }
+
        $dvd->update([
            'nome'=>$request->nome,
            'legenda'=>$request->legenda,
            'preco'=>$request->preco,
-           'quantidade'=>$request->quantidade
-
+           'quantidade'=>$request->quantidade,
+           'imagem' => $imagePath
        ]);
        return "DVD alterado com sucesso";
 
@@ -56,4 +67,8 @@ class DvdsController extends Controller
    public function home(){
        return view('welcome');
    }
+
+
+
+
 }

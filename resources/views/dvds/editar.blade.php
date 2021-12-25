@@ -7,8 +7,8 @@
     <title> Editar cadastro DVD</title>
 </head>
 <body>
-    
-    <form action="{{route('atualizar_dvd',['id' => $dvds->id ])}}" method="POST">
+
+    <form action="{{route('atualizar_dvd',['id' => $dvds->id ])}}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="">Nome</label> <br/>
         <input type="text" name="nome" value="{{$dvds->nome}}"> <br/>
@@ -18,6 +18,7 @@
         <input type="text" name="preco"  value="{{$dvds->preco}}"> <br/>
         <label for="">Quantidade</label> <br/>
         <input type="text" name="quantidade"  value="{{$dvds->quantidade}}"> <br/>
+        <input type="file" name="imagem"> <br/>
         <button>Salvar</button>
     </form>
 </body>

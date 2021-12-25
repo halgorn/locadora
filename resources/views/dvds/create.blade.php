@@ -7,7 +7,7 @@
     <title> Cadastrar um novo DVD</title>
 </head>
 <body>
-    <form action="{{ route('registrar_dvd')}}" method="POST">
+    <form action="{{ route('registrar_dvd')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="">Nome</label> <br/>
         <input type="text" name="nome"> <br/>
@@ -17,6 +17,7 @@
         <input type="text" name="preco"> <br/>
         <label for="">Quantidade</label> <br/>
         <input type="text" name="quantidade"> <br/>
+        <input type="file" name="imagem"> <br/>
         <button>Salvar</button>
     </form>
 </body>
