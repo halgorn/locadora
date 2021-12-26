@@ -47,7 +47,7 @@
             width: 300px;
         }
         </style>
-
+<?php if(auth()->user()->cliente==1): ?>
     <div class="container-categoria">
         <h1>Filmes para alugar</h1>
         <h3>Categoria</h3>
@@ -67,23 +67,26 @@
             @endforeach
         </div>
     </div>
-    <table>
-        <tr><th>Nome</th><th>Legenda</th><th>Preço</th><th>Quantidade</th>
-        @foreach($dvds as $dvd):
-            <tr>
-                <td>{{$dvd->nome}}</td>
-                <td>{{$dvd->legenda}}</td>
-                <td>{{$dvd->preco}}</td>
-                <td>{{$dvd->quantidade}}</td>
-                <td><a href="{{ route('editar_dvd', ['id'=>$dvd->id])}}"
-                        title="Editar dvd {{$dvd->nome}}">Editar</a>
-                </td>
+    <?php endif ?>
+    <?php if(auth()->user()->admin==1): ?>
+        <table>
+            <tr><th>Nome</th><th>Legenda</th><th>Preço</th><th>Quantidade</th>
+            @foreach($dvds as $dvd):
+                <tr>
+                    <td>{{$dvd->nome}}</td>
+                    <td>{{$dvd->legenda}}</td>
+                    <td>{{$dvd->preco}}</td>
+                    <td>{{$dvd->quantidade}}</td>
+                    <td><a href="{{ route('editar_dvd', ['id'=>$dvd->id])}}"
+                            title="Editar dvd {{$dvd->nome}}">Editar</a>
+                    </td>
 
-                <td><a href="{{ route('excluir_dvd', ['id'=>$dvd->id])}}"
-                        title="Excluir dvd {{$dvd->nome}}">Excluir</a>
-                </td>
-            </tr>
-        @endforeach
-    </table>
+                    <td><a href="{{ route('excluir_dvd', ['id'=>$dvd->id])}}"
+                            title="Excluir dvd {{$dvd->nome}}">Excluir</a>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+    <?php endif ?>
 </body>
 </html>

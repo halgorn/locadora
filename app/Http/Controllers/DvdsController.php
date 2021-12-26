@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\dvd;
+use App\Models\User;
 
 class DvdsController extends Controller
 {
@@ -15,7 +16,6 @@ class DvdsController extends Controller
     public function store(Request $request)
     {
         if ($request->hasFile('imagem') && $request->imagem->isValid()){
-
             $imagePath = $request->imagem->store('public');
         }
         Dvd::create([
@@ -29,6 +29,7 @@ class DvdsController extends Controller
     }
     public function show()
     {
+
         $dvds = Dvd::all();
         return view('dvds.show', ['dvds' => $dvds]);
     }
