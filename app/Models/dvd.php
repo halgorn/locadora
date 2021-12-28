@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dvd extends Model
 {
-    protected $fillable = ['nome', 'legenda','preco','quantidade','imagem'];
+    protected $fillable = ['nome', 'legenda','preco','quantidade','imagem','categoria'];
 }

@@ -224,6 +224,11 @@ body {
               </div>
 
               <div class="user-box">
+                <input type="text" name="categoria" required> <br/>
+                <label for="">Categoria</label> <br/>
+              </div>
+
+              <div class="user-box">
                 <input type="file" name="imagem" required> <br/>
                 <label for="">Imagem de capa</label> <br/>
               </div>

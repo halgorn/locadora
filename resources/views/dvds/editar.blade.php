@@ -222,6 +222,10 @@ body {
                 <input type="text" name="quantidade" required> <br/>
                 <label for="">Quantidade</label> <br/>
               </div>
+              <div class="user-box">
+                <input type="text" name="categoria" required> <br/>
+                <label for="">Categoria</label> <br/>
+              </div>
 
               <div class="user-box">
                 <input type="file" name="imagem" required> <br/>

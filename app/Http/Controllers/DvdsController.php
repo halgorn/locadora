@@ -23,9 +23,11 @@ class DvdsController extends Controller
             'legenda' => $request->legenda,
             'preco' => $request->preco,
             'quantidade' => $request->quantidade,
+            'categoria' =>$request->categoria,
             'imagem' => $imagePath
+
         ]);
-        return "Dvd cadastrado com sucesso";
+        return view('dashboard');
     }
     public function show()
     {
@@ -37,7 +39,7 @@ class DvdsController extends Controller
    {
        $dvd = Dvd::findOrFail($id);
        $dvd->delete();
-       return "Livro excluido com sucesso.";
+       return view('dashboard');
    }
    public function edit($id)
    {
@@ -59,9 +61,10 @@ class DvdsController extends Controller
            'legenda'=>$request->legenda,
            'preco'=>$request->preco,
            'quantidade'=>$request->quantidade,
+           'categoria' =>$request->categoria,
            'imagem' => $imagePath
        ]);
-       return "DVD alterado com sucesso";
+       return view('dashboard');
 
    }
 
