@@ -46,4 +46,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::post('/', 'App\Http\Controllers\DvdsController@home')->name('home');
 
+#mostrar usuarios
+Route::get('/usuarios/usuarioShow', 'App\Http\Controllers\UsuarioController@show')->name('mostrar_usuario');
+
 
