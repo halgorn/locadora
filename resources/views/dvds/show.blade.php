@@ -556,7 +556,8 @@ h1, h2, p, span,a{
                             title="Editar dvd {{$dvd->nome}}">Editar</a>
                         </td>
                         <td><a href="{{ route('excluir_dvd', ['id'=>$dvd->id])}}"
-                            title="Excluir dvd {{$dvd->nome}}">Excluir</a></td>
+                            title="Excluir dvd {{$dvd->nome}}">Excluir</a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

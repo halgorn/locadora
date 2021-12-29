@@ -49,6 +49,12 @@ class UsuarioController extends Controller
         return view('usuarios.usuarioShow', ['user' => $user]);
     }
 
+    public function excluir_u($id)
+   {
+       $user = User::findOrFail($id);
+       $user->delete();
+       return view('dashboard');
+   }
     /**
      * Show the form for editing the specified resource.
      *

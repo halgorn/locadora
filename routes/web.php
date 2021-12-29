@@ -49,4 +49,7 @@ Route::post('/', 'App\Http\Controllers\DvdsController@home')->name('home');
 #mostrar usuarios
 Route::get('/usuarios/usuarioShow', 'App\Http\Controllers\UsuarioController@show')->name('mostrar_usuario');
 
+#excluir por id usuario
+Route::get('/usuarios/{id}', 'App\Http\Controllers\UsuarioController@ExcluirUsuario')->name('excluir_usuario');
+
 
