@@ -34,7 +34,13 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'nome' => $request->name,
+            'email' => $request->email,
+            'senha' => $request->password
+
+        ]);
+        return view('dashboard');
     }
 
     /**
@@ -49,7 +55,7 @@ class UsuarioController extends Controller
         return view('usuarios.usuarioShow', ['user' => $user]);
     }
 
-    public function excluir_u($id)
+    public function ExcluirUsuario($id)
    {
        $user = User::findOrFail($id);
        $user->delete();

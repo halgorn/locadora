@@ -50,6 +50,9 @@ Route::post('/', 'App\Http\Controllers\DvdsController@home')->name('home');
 Route::get('/usuarios/usuarioShow', 'App\Http\Controllers\UsuarioController@show')->name('mostrar_usuario');
 
 #excluir por id usuario
-Route::get('/usuarios/{id}', 'App\Http\Controllers\UsuarioController@ExcluirUsuario')->name('excluir_usuario');
+Route::get('/usuarios/del/{id}', 'App\Http\Controllers\UsuarioController@ExcluirUsuario')->name('excluir_usuario');
+
+#Rota de Post para o formulario usuario
+Route::post('/usuarios/usuarioCreate', 'App\Http\Controllers\UsuarioController@store')->name('registrar_usuario');
 
 
