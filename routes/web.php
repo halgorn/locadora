@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/dvds/novo', 'DvdsController@create');
+//Route::post('/dvds/novo', 'DvdsController@create');
 
 #Rota de acesso ao formulario
 Route::get('/dvds/novo', 'App\Http\Controllers\DvdsController@create');
@@ -46,13 +46,34 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::post('/', 'App\Http\Controllers\DvdsController@home')->name('home');
 
+
+
+
+#ROTAS PARA USUARIO
+
 #mostrar usuarios
 Route::get('/usuarios/usuarioShow', 'App\Http\Controllers\UsuarioController@show')->name('mostrar_usuario');
 
 #excluir por id usuario
 Route::get('/usuarios/del/{id}', 'App\Http\Controllers\UsuarioController@ExcluirUsuario')->name('excluir_usuario');
 
+
+#criar usuario
+Route::get('/usuarios/usuarioCreate', 'App\Http\Controllers\UsuarioController@create');
+#Route::get('/dvds/novo',              'App\Http\Controllers\DvdsController@create');
+
 #Rota de Post para o formulario usuario
 Route::post('/usuarios/usuarioCreate', 'App\Http\Controllers\UsuarioController@store')->name('registrar_usuario');
+#Route::post('/dvds/novo',              'App\Http\Controllers\DvdsController@store')->name('registrar_dvd');
+#Rota de acesso ao formulario
 
 
+#Rota de Post para o formulario
+
+
+#mostrar editar por id
+Route::get('/usuarios/edit/{id}', 'App\Http\Controllers\UsuarioController@Edit')->name('editar_usuario');
+
+
+#salvar dados no edit
+Route::post('/usuarios/edit/{id}', 'App\Http\Controllers\UsuarioController@update')->name('atualizar_usuario');

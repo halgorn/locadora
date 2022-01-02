@@ -23,7 +23,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view ('usuarios.usuarioCreate');
     }
 
     /**
@@ -35,9 +35,11 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         User::create([
-            'nome' => $request->name,
+            'name' => $request->name,
             'email' => $request->email,
-            'senha' => $request->password
+            'password' => $request->password,
+            'cliente' => $request->cliente,
+            'admin' => $request->admin
 
         ]);
         return view('dashboard');
@@ -61,28 +63,28 @@ class UsuarioController extends Controller
        $user->delete();
        return view('dashboard');
    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+   public function Edit($id)
+   {
+       $user = User::findOrFail($id);
+       return view('usuario.usuarioEdit', ['user'=> $user]);
+   }
+
+   public function update(Request $request, $id)
+   {
+       $user = User::findOrFail($id);
+
+
+       $user->update([
+           'name'=>$request->name,
+           'email'=>$request->email,
+           'password'=>$request->password,
+           'cliente'=>$request->cliente,
+           'admin' =>$request->admin
+       ]);
+       return view('dashboard');
+
+   }
 
     /**
      * Remove the specified resource from storage.

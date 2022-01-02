@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="with=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Cadastrar um novo Usuário</title>
+    <title> Editar cadastro DVD</title>
 </head>
 <body>
 
@@ -17,11 +17,11 @@ body {
   padding:0;
   font-family: sans-serif;
   background: linear-gradient(#301414, #552424);
-  background: url(http://localhost:8000/img/baixados.jpg);
+  background: url(http://localhost:8000/img/edit_fundo.jpg);
   background-size: cover;
 }
 .container{
-    background: url(http://localhost:8000/img/fundo_index.jpg);
+
     box-shadow: inset 0px 0px 400px 110px rgb(0 0 0 / 99%);
 }
 .login-box {
@@ -201,31 +201,36 @@ body {
 
     <div class="container">
         <div class="login-box">
-            <h2>Cadastro de Usuários</h2>
-            <form action="{{ route('registrar_usuario')}}" method="POST" enctype="multipart/form-data">
+            <h2>Editar DVD</h2>
+            <form action="{{route('atualizar_dvd',['id' => $dvds->id ])}}" method="POST" enctype="multipart/form-data">
                 @csrf
               <div class="user-box">
-                <input type="text" name="name" required> <br/>
+                <input type="text" name="nome" required> <br/>
                 <label for="">Nome</label> <br/>
               </div>
               <div class="user-box">
-                <input type="text" name="email" required> <br/>
-                <label for="">E-mail</label> <br/>
+                <input type="text" name="legenda" required> <br/>
+                <label for="">Legenda</label> <br/>
               </div>
 
               <div class="user-box">
-                <input type="text" name="password" required> <br/>
-                <label for="">Senha</label> <br/>
-              </div>
-              <div class="user-box">
-                <input type="text" name="cliente" required> <br/>
-                <label for="">cliente</label> <br/>
-              </div>
-              <div class="user-box">
-                <input type="text" name="admin" required> <br/>
-                <label for="">admin</label> <br/>
+                <input type="text" name="preco" required> <br/>
+                <label for="">Preço</label> <br/>
               </div>
 
+              <div class="user-box">
+                <input type="text" name="quantidade" required> <br/>
+                <label for="">Quantidade</label> <br/>
+              </div>
+              <div class="user-box">
+                <input type="text" name="categoria" required> <br/>
+                <label for="">Categoria</label> <br/>
+              </div>
+
+              <div class="user-box">
+                <input type="file" name="imagem" required> <br/>
+                <label for="">Imagem de capa</label> <br/>
+              </div>
 
               <span></span>
               <span></span>
@@ -248,4 +253,6 @@ body {
 
 
 </body>
+
+
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="with=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Ver DVD</title>
+    <title> Ver Usuários</title>
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
 </head>
 
@@ -147,6 +147,9 @@ h1, h2, p, span,a{
                         <td>{{$u->update_at}}</td>
                         <td><?php if ($u->admin==1){   echo "Sim";  }else{  echo"Não"; }?></td>
                         <td><?php if ($u->cliente==1){ echo "Sim"; }else{  echo"Não"; } ?></td>
+                        <td><a href="{{ route('editar_usuario', ['id'=>$u->id])}}"
+                            title="Editar {{$u->nome}}">Editar</a>
+                        </td>
 
                         <td><a href="{{ route('excluir_usuario', ['id'=>$u->id])}}"
                             title="Excluir usuario {{$u->nome}}">Excluir</a>
@@ -157,7 +160,7 @@ h1, h2, p, span,a{
             </table>
             <div class="btn">
                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Painel</a>
-                <a  class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('registrar_dvd')}}">Cadastrar Usuário</a>            </div>
+                <a  class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('registrar_usuario')}}">Cadastrar Usuário</a>            </div>
             </div>
 </body>
 
