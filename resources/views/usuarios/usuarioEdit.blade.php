@@ -201,11 +201,11 @@ body {
 
     <div class="container">
         <div class="login-box">
-            <h2>Editar DVD</h2>
-            <form action="{{route('atualizar_dvd',['id' => $dvds->id ])}}" method="POST" enctype="multipart/form-data">
+            <h2>Editar Usuario</h2>
+            <form action="{{route('atualizar_usuario',['id' => $user->id ])}}" method="POST" enctype="multipart/form-data">
                 @csrf
               <div class="user-box">
-                <input type="text" name="nome" required> <br/>
+                <input type="text" name="name" value="{{$user->name}}" required> <br/>
                 <label for="">Nome</label> <br/>
               </div>
               <div class="user-box">

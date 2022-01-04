@@ -73,7 +73,9 @@ Route::post('/usuarios/usuarioCreate', 'App\Http\Controllers\UsuarioController@s
 
 #mostrar editar por id
 Route::get('/usuarios/edit/{id}', 'App\Http\Controllers\UsuarioController@Edit')->name('editar_usuario');
+#Route::get('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@edit')->name('editar_dvd');
 
 
 #salvar dados no edit
 Route::post('/usuarios/edit/{id}', 'App\Http\Controllers\UsuarioController@update')->name('atualizar_usuario');
+#Route::post('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@update')->name('atualizar_dvd');

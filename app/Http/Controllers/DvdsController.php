@@ -27,6 +27,7 @@ class DvdsController extends Controller
             'imagem' => $imagePath
 
         ]);
+
         return view('dashboard');
     }
     public function show()
