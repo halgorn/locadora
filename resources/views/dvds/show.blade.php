@@ -309,14 +309,16 @@ footer {
             <h1 id="home">Populares na Netflix</h1>
             <div class="box">
                 @foreach($dvds as $dvd)
-                <div class="dvd">
-                    <?php
-                    $subject = $dvd->imagem;
-                    $search = 'public/' ;
-                    $url = str_replace($search, '', $subject) ;
-                    ?>
-                    <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
-                </div>
+                    <?php if(str_contains($dvd->categoria, 'Populares na Netflix')) {?>
+                        <div class="dvd">
+                            <?php
+                            $subject = $dvd->imagem;
+                            $search = 'public/' ;
+                            $url = str_replace($search, '', $subject) ;
+                            ?>
+                            <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
+                        </div>
+                    <?php } ?>
                 @endforeach
             </div>
         </div>
@@ -325,28 +327,33 @@ footer {
         <h1 id="myList">Tendencia Hoje</h1>
         <div class="box">
             @foreach($dvds as $dvd)
-            <div class="dvd">
-                <?php
-                $subject = $dvd->imagem;
-                $search = 'public/' ;
-                $url = str_replace($search, '', $subject) ;
-                ?>
-                <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
-            </div>
+                <?php if(str_contains($dvd->categoria, 'Tendencia Hoje')) {?>
+                    <div class="dvd">
+                        <?php
+                        $subject = $dvd->imagem;
+                        $search = 'public/' ;
+                        $url = str_replace($search, '', $subject) ;
+                        ?>
+                        <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
+                    </div>
+                <?php } ?>
             @endforeach
         </div>
 
         <h1 id="tvShows">Show de TV</h1>
         <div class="box">
             @foreach($dvds as $dvd)
-                <div class="dvd">
-                    <?php
-                    $subject = $dvd->imagem;
-                    $search = 'public/' ;
-                    $url = str_replace($search, '', $subject) ;
-                    ?>
-                    <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
-                </div>
+                <?php if(str_contains($dvd->categoria, 'Show de TV')) {?>
+                    <div class="dvd">
+                        <?php
+                        $subject = $dvd->imagem;
+                        $search = 'public/' ;
+                        $url = str_replace($search, '', $subject) ;
+                        ?>
+                        <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
+                        <button>{{$dvd->quantidade}}</button>
+                    </div>
+                <?php } ?>
             @endforeach
         </div>
 
@@ -354,28 +361,33 @@ footer {
         <h1 id="movies">Ação e Aventura</h1>
         <div class="box">
             @foreach($dvds as $dvd)
-                <div class="dvd">
-                    <?php
-                    $subject = $dvd->imagem;
-                    $search = 'public/' ;
-                    $url = str_replace($search, '', $subject) ;
-                    ?>
-                    <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
-                </div>
+                <?php if(str_contains($dvd->categoria, 'Ação e Aventura')) {?>
+                    <div class="dvd">
+                        <?php
+                        $subject = $dvd->imagem;
+                        $search = 'public/' ;
+                        $url = str_replace($search, '', $subject) ;
+                        ?>
+                        <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
+                    </div>
+                <?php } ?>
             @endforeach
         </div>
 
         <h1 id="originals"> Originais Netflix </h1>
         <div class="box">
             @foreach($dvds as $dvd)
-                <div class="dvd">
-                    <?php
-                    $subject = $dvd->imagem;
-                    $search = 'public/' ;
-                    $url = str_replace($search, '', $subject) ;
-                    ?>
-                    <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
-                </div>
+                <?php if(str_contains($dvd->categoria, 'Originais Netflix')) {?>
+                    <div class="dvd">
+                        <?php
+                        $subject = $dvd->imagem;
+                        $search = 'public/' ;
+                        $url = str_replace($search, '', $subject) ;
+                        ?>
+                        <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
+
+                    </div>
+                <?php } ?>
             @endforeach
         </div>
       <!-- END OF MAIN CONTAINER -->

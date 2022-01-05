@@ -209,27 +209,22 @@ body {
                 <label for="">Nome</label> <br/>
               </div>
               <div class="user-box">
-                <input type="text" name="legenda" required> <br/>
-                <label for="">Legenda</label> <br/>
+                <input type="text" name="email" value="{{$user->email}}" required> <br/>
+                <label for="">E-mail</label> <br/>
               </div>
 
               <div class="user-box">
-                <input type="text" name="preco" required> <br/>
-                <label for="">Preço</label> <br/>
+                <input type="text" name="password" required> <br/>
+                <label for="">Senha</label> <br/>
               </div>
 
               <div class="user-box">
-                <input type="text" name="quantidade" required> <br/>
-                <label for="">Quantidade</label> <br/>
+                <input type="text" name="cliente" value="{{$user->cliente}}" required> <br/>
+                <label for="">Usuário é Cliente? (0 == Não e 1== Sim)</label> <br/>
               </div>
               <div class="user-box">
-                <input type="text" name="categoria" required> <br/>
-                <label for="">Categoria</label> <br/>
-              </div>
-
-              <div class="user-box">
-                <input type="file" name="imagem" required> <br/>
-                <label for="">Imagem de capa</label> <br/>
+                <input type="text" name="admin" value="{{$user->admin}}" required> <br/>
+                <label for="">Usuário é Administrador? (0 == Não e 1== Sim)</label> <br/>
               </div>
 
               <span></span>

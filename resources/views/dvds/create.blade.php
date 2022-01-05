@@ -47,8 +47,12 @@ body {
 .login-box .user-box {
   position: relative;
 }
-
-.login-box .user-box input {
+.login-box .user-box
+select:focus {
+  transition:0s;
+  background-color: rgba(0,0,0,.5)
+}
+.login-box .user-box input,select {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -224,10 +228,15 @@ body {
               </div>
 
               <div class="user-box">
-                <input type="text" name="categoria" required> <br/>
+                <select name="categoria" required>
+                    <option value="Ação e Aventura">Ação e Aventura</option>
+                    <option value="Show de TV" selected>Show de TV</option>
+                    <option value="Originais Netflix">Originais Netflix</option>
+                    <option value="Tendencia Hoje">Tendencia Hoje</option>
+                    <option value="Populares na Netflix">Populares na Netflix</option>
+                  </select>
                 <label for="">Categoria</label> <br/>
               </div>
-
               <div class="user-box">
                 <input type="file" name="imagem" required> <br/>
                 <label for="">Imagem de capa</label> <br/>

@@ -48,7 +48,12 @@ body {
   position: relative;
 }
 
-.login-box .user-box input {
+.login-box .user-box
+select:focus {
+  transition:0s;
+  background-color: rgba(0,0,0,.5)
+}
+.login-box .user-box input,select {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -205,25 +210,31 @@ body {
             <form action="{{route('atualizar_dvd',['id' => $dvds->id ])}}" method="POST" enctype="multipart/form-data">
                 @csrf
               <div class="user-box">
-                <input type="text" name="nome" required> <br/>
+                <input type="text" name="nome" value="{{$dvds->nome}}" required> <br/>
                 <label for="">Nome</label> <br/>
               </div>
               <div class="user-box">
-                <input type="text" name="legenda" required> <br/>
+                <input type="text" name="legenda" value="{{$dvds->legenda}}" required> <br/>
                 <label for="">Legenda</label> <br/>
               </div>
 
               <div class="user-box">
-                <input type="text" name="preco" required> <br/>
+                <input type="text" name="preco" value="{{$dvds->preco}}" required> <br/>
                 <label for="">Preço</label> <br/>
               </div>
 
               <div class="user-box">
-                <input type="text" name="quantidade" required> <br/>
+                <input type="text" name="quantidade" value="{{$dvds->quantidade}}" required> <br/>
                 <label for="">Quantidade</label> <br/>
               </div>
               <div class="user-box">
-                <input type="text" name="categoria" required> <br/>
+                <select name="categoria" required>
+                    <option value="Ação e Aventura">Ação e Aventura</option>
+                    <option value="Show de TV" selected>Show de TV</option>
+                    <option value="Originais Netflix">Originais Netflix</option>
+                    <option value="Tendencia Hoje">Tendencia Hoje</option>
+                    <option value="Populares na Netflix">Populares na Netflix</option>
+                </select>
                 <label for="">Categoria</label> <br/>
               </div>
 
