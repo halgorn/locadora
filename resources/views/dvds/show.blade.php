@@ -351,7 +351,24 @@ footer {
                         $url = str_replace($search, '', $subject) ;
                         ?>
                         <a href="#animals" class="item"><img src="{{ url ("storage/{$url}") }}" alt="{{$dvd->nome}}"></a>
-                        <button>{{$dvd->quantidade}}</button>
+                            <form action="{{ route('registrar_locacao')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <label>A locação dos filmes é de 15 dias</label>
+                                <input type="text" name="nome_locador" value="{{auth()->user()->name}}" required> <br/>
+                                <input type="text" name="nome_filme" value="{{$dvd->nome}}" required> <br/>
+                                <input type="text" name="data_inicial" value="{{date('Y-m-d H:i:s')}}" required> <br/>
+                                <?php $data = date('Y-m-d H:i:s'); ?>
+                                <input type="text" name="data_final"value="{{date('Y-m-d H:i:s', strtotime("+15 days",strtotime($data)))}}" required> <br/>
+                                <input type="text" name="quantidade" value="{{$dvd->quantidade = $dvd->quantidade-1}}" required> <br/>
+                                <input type="text" name="id_filme" value="{{$dvd->id}}" required> <br/>
+                                <?php if($dvd->disponibilidade==0){?>
+                                    <p>Indisponivel para alugar</p>
+                                <?php } else //if ($dvd->disponibilidade==1){?>
+                                    <button>Alugar</button>
+                                <?php } //}else if($dvd->id== ) ?>
+                            </form>
+                            <input type="text" name="data_final" value="{{$dvd->quantidade = $dvd->quantidade-1}}" required> <br/>
+                            <input type="text" name="data_final" value="{{$dvd->quantidade}}" required> <br/>
                     </div>
                 <?php } ?>
             @endforeach

@@ -79,3 +79,16 @@ Route::get('/usuarios/edit/{id}', 'App\Http\Controllers\UsuarioController@Edit')
 #salvar dados no edit
 Route::post('/usuarios/edit/{id}', 'App\Http\Controllers\UsuarioController@update')->name('atualizar_usuario');
 #Route::post('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@update')->name('atualizar_dvd');
+
+
+#ROTAS PARA LOCAÇÃO
+
+#Rota de acesso ao formulario
+Route::get('/locacao/show', 'App\Http\Controllers\LocacaoController@create');
+
+#Rota de Post para o formulario locação
+Route::post('/locacao/show', 'App\Http\Controllers\LocacaoController@store')->name('registrar_locacao');
+
+
+
+
