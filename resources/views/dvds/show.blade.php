@@ -361,11 +361,12 @@ footer {
                                 <input type="text" name="data_final"value="{{date('Y-m-d H:i:s', strtotime("+15 days",strtotime($data)))}}" required> <br/>
                                 <input type="text" name="quantidade" value="{{$dvd->quantidade = $dvd->quantidade-1}}" required> <br/>
                                 <input type="text" name="id_filme" value="{{$dvd->id}}" required> <br/>
-                                <?php if($dvd->disponibilidade==0){?>
-                                    <p>Indisponivel para alugar</p>
-                                <?php } else //if ($dvd->disponibilidade==1){?>
+                                <?php if ($dvd->quantidade == 0) {?>
+                                    <p>Indisponivel</p>
+                                <?php }else{ ?>
                                     <button>Alugar</button>
-                                <?php } //}else if($dvd->id== ) ?>
+                                <?php } ?>
+
                             </form>
                             <input type="text" name="data_final" value="{{$dvd->quantidade = $dvd->quantidade-1}}" required> <br/>
                             <input type="text" name="data_final" value="{{$dvd->quantidade}}" required> <br/>

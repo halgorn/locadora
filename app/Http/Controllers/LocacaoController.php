@@ -51,15 +51,18 @@ class LocacaoController extends Controller
         return view('dashboard');
     }
 
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+   public function show()
     {
-        //
+
+        $locacao = Locacao::all();
+        return view('locacao.show', ['locacao' => $locacao]);
     }
 
     /**

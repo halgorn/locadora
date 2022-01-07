@@ -68,16 +68,7 @@ class DvdsController extends Controller
        return view('dashboard');
 
    }
-   public function updateDisp(Request $request, $id)
-   {
-       $dvd = Dvd::findOrFail($id);
 
-       $dvd->update([
-           'quantidade'=>$request->quantidade,
-       ]);
-       return view('dashboard');
-
-   }
 
    public function home(){
        return view('welcome');
