@@ -89,7 +89,8 @@ Route::get('/locacao/show', 'App\Http\Controllers\LocacaoController@create');
 #Rota de Post para o formulario locação
 Route::post('/locacao/show', 'App\Http\Controllers\LocacaoController@store')->name('registrar_locacao');
 
-Route::post('/dvds/ver', 'App\Http\Controllers\LocacaoController@show')->name('mostrar_locacao');
+Route::get('/locacao/ver', 'App\Http\Controllers\LocacaoController@show')->name('mostrar_locacao');
+#Route::get('dashboard', 'App\Http\Controllers\LocacaoController@show')->name('mostrar_locacao_home');
 
 
 

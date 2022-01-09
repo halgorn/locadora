@@ -28,9 +28,8 @@ body {
 }
 .container-exib-cadastro {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 70px;
+  left: 25%;
 }
 .container-exib-cadastro table {
   width: 800px;
@@ -122,7 +121,7 @@ h1, h2, p, span,a{
                 </a>
             </div>
             <div class="texto-titulo">
-                <h2 id="" class="our-story-card-title" data-uia="hero-title">Filmes Cadastrados. </h2>
+                <h2 id="" class="our-story-card-title" data-uia="hero-title">Usuários Cadastrados. </h2>
             </div>
             <table>
                 <thead>
@@ -162,6 +161,7 @@ h1, h2, p, span,a{
                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Painel</a>
                 <a  class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('registrar_usuario')}}">Cadastrar Usuário</a>            </div>
             </div>
+        </div>
 </body>
 
 </html>
