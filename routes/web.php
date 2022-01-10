@@ -38,6 +38,9 @@ Route::get('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@edit')->name(
 #salvar dados no edit
 Route::post('/dvds/edit/{id}', 'App\Http\Controllers\DvdsController@update')->name('atualizar_dvd');
 
+#Route::get('/dvds/ver', 'App\Http\Controllers\LocacaoController@locacaoShow')->name('mostrar_locacaoDvd');
+
+#Route::get('/dvds/ver', 'App\Http\Controllers\DvdsController@locacaoShow')->name('mostrar_locacao_dvd');
 # rota para o login
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -90,6 +93,7 @@ Route::get('/locacao/show', 'App\Http\Controllers\LocacaoController@create');
 Route::post('/locacao/show', 'App\Http\Controllers\LocacaoController@store')->name('registrar_locacao');
 
 Route::get('/locacao/ver', 'App\Http\Controllers\LocacaoController@show')->name('mostrar_locacao');
+
 #Route::get('dashboard', 'App\Http\Controllers\LocacaoController@show')->name('mostrar_locacao_home');
 
 

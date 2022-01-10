@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\dvd;
 use App\Models\User;
+use App\Models\Locacao;
 
 class DvdsController extends Controller
 {
@@ -34,8 +35,12 @@ class DvdsController extends Controller
     {
 
         $dvds = Dvd::all();
-        return view('dvds.show', ['dvds' => $dvds]);
+        $locacao = Locacao::all();
+        return view('dvds.show', compact('dvds','locacao'));
     }
+
+
+
    public function excluir($id)
    {
        $dvd = Dvd::findOrFail($id);

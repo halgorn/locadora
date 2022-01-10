@@ -280,7 +280,28 @@ footer {
     font-size: 15px;
   }
 }
+input{
+  display:none;
+  height: 0px;
+}
+button {
+    background-color: #e50914;
+    line-height: normal;
+    padding: 7px 17px;
+    font-weight: 400;
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+    outline: 0;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    margin:20px;
 
+  }
+  form{
+    text-align: center;
+  }
     </style>
     <div class="wrapper">
 
@@ -354,22 +375,42 @@ footer {
                             <form action="{{ route('registrar_locacao')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <label>A locação dos filmes é de 15 dias</label>
-                                <input type="text" name="nome_locador" value="{{auth()->user()->name}}" required> <br/>
-                                <input type="text" name="nome_filme" value="{{$dvd->nome}}" required> <br/>
-                                <input type="text" name="data_inicial" value="{{date('Y-m-d H:i:s')}}" required> <br/>
+                                <input type="text" name="nome_locador" value="{{auth()->user()->name}}" required>
+                                <input type="text" name="nome_filme" value="{{$dvd->nome}}" required>
+                                <input type="text" name="data_inicial" value="{{date('Y-m-d H:i:s')}}" required>
                                 <?php $data = date('Y-m-d H:i:s'); ?>
-                                <input type="text" name="data_final"value="{{date('Y-m-d H:i:s', strtotime("+15 days",strtotime($data)))}}" required> <br/>
-                                <input type="text" name="quantidade" value="{{$dvd->quantidade = $dvd->quantidade-1}}" required> <br/>
-                                <input type="text" name="id_filme" value="{{$dvd->id}}" required> <br/>
-                                <?php if ($dvd->quantidade == 0) {?>
-                                    <p>Indisponivel</p>
-                                <?php }else{ ?>
-                                    <button>Alugar</button>
-                                <?php } ?>
+                                <input type="text" name="data_final"value="{{date('Y-m-d H:i:s', strtotime("+15 days",strtotime($data)))}}" required>
+                                <input type="text" name="quantidade" value="{{$dvd->quantidade = $dvd->quantidade-1}}" required>
+                                <input type="text" name="id_filme" value="{{$dvd->id}}" required>
+
+
+                                <?php if ($dvd->quantidade <= 0) { ?>
+
+                                      <p>Indisponivel</p>
+
+                                  <?php }else{ ?>
+
+                                    @foreach ($locacao as $i)
+                                    <?php
+                                      if($dvd->nome == $i["nome_filme"]){
+                                        $valida= $i["nome_filme"];
+                                      }
+                                    ?>
+
+                                    @endforeach
+                                    <?php if($valida==$dvd->nome){ ?>
+                                      <p>Você ja alugou este DVD</p>
+                                    <?php }else{?>
+                                      <button>Alugar</button>
+
+                                    <?php } ?>
+
+                                  <?php
+
+                                }?>
 
                             </form>
-                            <input type="text" name="data_final" value="{{$dvd->quantidade = $dvd->quantidade-1}}" required> <br/>
-                            <input type="text" name="data_final" value="{{$dvd->quantidade}}" required> <br/>
+
                     </div>
                 <?php } ?>
             @endforeach
