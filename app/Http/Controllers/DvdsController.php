@@ -19,15 +19,27 @@ class DvdsController extends Controller
         if ($request->hasFile('imagem') && $request->imagem->isValid()){
             $imagePath = $request->imagem->store('public');
         }
-        Dvd::create([
-            'nome' => $request->nome,
-            'legenda' => $request->legenda,
-            'preco' => $request->preco,
-            'quantidade' => $request->quantidade,
-            'categoria' =>$request->categoria,
-            'imagem' => $imagePath
+        $dvds = Dvd::all();
+        foreach($dvds as $dvd){
+            if($dvd->nome == $request->nome){
+                $permite_cadastro = $dvd->nome;
+            }
+        }
 
-        ]);
+        if($permite_cadastro == null){
+            Dvd::create([
+                'nome' => $request->nome,
+                'legenda' => $request->legenda,
+                'preco' => $request->preco,
+                'quantidade' => $request->quantidade,
+                'categoria' =>$request->categoria,
+                'imagem' => $imagePath
+
+            ]);
+        }else{
+            echo "filme ja cadastrado";
+        }
+
 
         return view('dashboard');
     }
