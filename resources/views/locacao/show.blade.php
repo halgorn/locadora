@@ -130,29 +130,38 @@ h1, h2, p, span,a{
                         <th>Nome Filme</th>
                         <th>Data Locação</th>
                         <th>Data Devolução</th>
+                        <?php if(auth()->user()->cliente==1): ?>
                         <th>Antecipar Devolução</th>
-                        <th>variavel cliente</th>
+                        <?php endif ?>
+                        <?php if(auth()->user()->admin==1): ?>
                         <th>Confirmação da devolução</th>
-                        <th>variavel admin</th>
+                        <?php endif ?>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($locacao as $l)
                     <tr>
-                        <td>{{$l->nome_locador}}</td>
+                        <?php if(auth()->user()->admin==1): ?>
+                            <td>{{$l->nome_locador}}</td>
+                        <?php endif ?>
+
+                        <?php if(auth()->user()->cliente==1): ?>
+                            <?php if(auth()->user()->name == $l->nome_locador): ?>
+                                <td>{{$l->nome_locador}}</td>
+                            <?php endif ?>
+                        <?php endif ?>
                         <td>{{$l->nome_filme}}</td>
                         <td>{{$l->data_inicial}}</td>
                         <td>{{$l->data_final}}</td>
 
-                       <?php if(auth()->user()->admin==1): ?>
+                       <?php if(auth()->user()->cliente==1): ?>
                             <td> <a href="{{ route('devolucao_user', ['id'=>$l->id])}}"
                                 title="Editar dvd {{$l->nome_filme}}">Antecipar</a></td> ?>
-                            <td>{{$l->devolucao_usuario}}</td>
                         <?php endif ?>
                         <?php if(auth()->user()->admin==1): ?>
                             <td> <a href="{{ route('devolucao_admin', ['id'=>$l->id])}}"
                                 title="Editar dvd {{$l->nome_filme}}">Confirmar Admin</a></td> ?>
-                            <td>{{$l->devolucao_admin}}</td>
+
                         <?php endif ?>
                     </tr>
                     @endforeach
