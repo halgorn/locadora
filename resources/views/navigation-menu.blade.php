@@ -28,6 +28,13 @@
                     </x-jet-nav-link>
                 </div>
                 <?php endif?>
+                <?php if(auth()->user()->cliente==1): ?>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('mostrar_locacao')}}" :active="request()->routeIs('dashboard')">
+                        {{ __('DVDS ALUGADOS') }}
+                    </x-jet-nav-link>
+                </div>
+                <?php endif?>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

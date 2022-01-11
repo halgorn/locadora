@@ -96,6 +96,15 @@ Route::get('/locacao/ver', 'App\Http\Controllers\LocacaoController@show')->name(
 
 #Route::get('dashboard', 'App\Http\Controllers\LocacaoController@show')->name('mostrar_locacao_home');
 
+Route::post('/locacao/devolucao/{id}', 'App\Http\Controllers\LocacaoController@devolucaoUser')->name('devolucao_user_1');
+
+Route::get('/locacao/devolucao/{id}', 'App\Http\Controllers\LocacaoController@edit')->name('devolucao_user');
+#Route::post('/Locaocao/edit/{id}', 'App\Http\Controllers\DvdsController@devolucaoUser')->name('atualizar_dvd');
+
+Route::post('/locacao/devolucaoAdmin/{id}', 'App\Http\Controllers\LocacaoController@devolucaoAdmin')->name('devolucao_admin_1');
+
+Route::get('/locacao/devolucaoAdmin/{id}', 'App\Http\Controllers\LocacaoController@editAdmin')->name('devolucao_admin');
+
 
 
 

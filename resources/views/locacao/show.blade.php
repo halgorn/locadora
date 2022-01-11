@@ -130,6 +130,10 @@ h1, h2, p, span,a{
                         <th>Nome Filme</th>
                         <th>Data Locação</th>
                         <th>Data Devolução</th>
+                        <th>Antecipar Devolução</th>
+                        <th>variavel cliente</th>
+                        <th>Confirmação da devolução</th>
+                        <th>variavel admin</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -139,6 +143,17 @@ h1, h2, p, span,a{
                         <td>{{$l->nome_filme}}</td>
                         <td>{{$l->data_inicial}}</td>
                         <td>{{$l->data_final}}</td>
+
+                       <?php if(auth()->user()->admin==1): ?>
+                            <td> <a href="{{ route('devolucao_user', ['id'=>$l->id])}}"
+                                title="Editar dvd {{$l->nome_filme}}">Antecipar</a></td> ?>
+                            <td>{{$l->devolucao_usuario}}</td>
+                        <?php endif ?>
+                        <?php if(auth()->user()->admin==1): ?>
+                            <td> <a href="{{ route('devolucao_admin', ['id'=>$l->id])}}"
+                                title="Editar dvd {{$l->nome_filme}}">Confirmar Admin</a></td> ?>
+                            <td>{{$l->devolucao_admin}}</td>
+                        <?php endif ?>
                     </tr>
                     @endforeach
                 </tbody>

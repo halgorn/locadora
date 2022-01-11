@@ -382,41 +382,36 @@ button {
                                 <input type="text" name="data_final"value="{{date('Y-m-d H:i:s', strtotime("+15 days",strtotime($data)))}}" required>
                                 <input type="text" name="quantidade" value="{{$dvd->quantidade = $dvd->quantidade-1}}" required>
                                 <input type="text" name="id_filme" value="{{$dvd->id}}" required>
+                                <?php
+                                if ($dvd->quantidade <= 0) {
 
-
-                                <?php if ($dvd->quantidade <= 0) { ?>
+                                ?>
 
                                       <p>Indisponivel</p>
-
                                   <?php }else{ ?>
-
                                     @foreach ($locacao as $i)
                                     <?php
-                                      if($dvd->nome == $i["nome_filme"]){
+
+                                      if(($dvd->nome == $i["nome_filme"]) &&(auth()->user()->name == $i["nome_locador"])){
                                         $valida= $i["nome_filme"];
+                                      }else{
+                                        $valida= 'vazio';
                                       }
                                     ?>
-
                                     @endforeach
-                                    <?php if($valida==$dvd->nome){ ?>
+                                    <?php
+
+                                    if($valida==$dvd->nome){ ?>
                                       <p>Você ja alugou este DVD</p>
                                     <?php }else{?>
                                       <button>Alugar</button>
-
-                                    <?php } ?>
-
-                                  <?php
-
-                                }?>
-
+                                    <?php }
+                                     }?>
                             </form>
-
                     </div>
                 <?php } ?>
             @endforeach
         </div>
-
-
         <h1 id="movies">Ação e Aventura</h1>
         <div class="box">
             @foreach($dvds as $dvd)

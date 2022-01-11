@@ -36,7 +36,9 @@ class LocacaoController extends Controller
             'nome_locador' => $request->nome_locador,
             'nome_filme' => $request->nome_filme,
             'data_inicial' => $request->data_inicial,
-            'data_final' => $request->data_final
+            'data_final' => $request->data_final,
+            'devolucao_usuario' => '',
+            'devolucao_admin' => '',
 
         ]);
         $dvd = Dvd::findOrFail($request->id_filme);
@@ -46,7 +48,52 @@ class LocacaoController extends Controller
         ]);
         return view('dashboard');
     }
+    public function edit($id)
+    {
+        $locacao = Locacao::findOrFail($id);
+        return view('locacao.devolucao', ['locacao'=> $locacao]);
+    }
+    public function editAdmin($id)
+    {
+        $locacao = Locacao::findOrFail($id);
+        return view('locacao.devolucaoAdmin', ['locacao'=> $locacao]);
+    }
 
+    function devolucaoUser(Request $request, $id){
+        $locacao = Locacao::findOrFail($id);
+
+        $locacao->update([
+            'devolucao_usuario'=>$request->devolucao_usuario,
+        ]);
+
+        return view('dashboard');
+
+    }
+    function devolucaoAdmin(Request $request, $id){
+        $locacao = Locacao::findOrFail($id);
+
+        $locacao->update([
+            'devolucao_admin'=>$request->devolucao_admin,
+        ]);
+        #dd($locacao['devolucao_usuario']);
+        if(($locacao['devolucao_usuario'] =='sim')&&($locacao['devolucao_admin'] =='sim')){
+            $locacao->delete();
+        }
+
+
+        return view('dashboard');
+
+    }
+
+
+
+
+    public function excluir($id)
+    {
+        $locacao = Locacao::findOrFail($id);
+        $locacao->delete();
+        return view('dashboard');
+    }
 
     /**
      * Display the specified resource.
