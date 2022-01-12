@@ -42,6 +42,7 @@ class UsuarioController extends Controller
             'admin' => $request->admin
 
         ]);
+
         return view('dashboard');
     }
 

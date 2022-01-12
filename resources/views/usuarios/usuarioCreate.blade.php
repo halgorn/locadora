@@ -196,9 +196,40 @@ body {
     width: 100%;
     justify-content: space-around;
 }
-
+.select label{
+    position:unset!important;
+}
+#permissao{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
     </style>
+<script>
+        setInterval(function () {
 
+
+            var ddl = document.getElementById("admin_input");
+            var selectedValue = ddl.options[ddl.selectedIndex].value;
+                if (selectedValue == 1)
+            {
+                document.getElementById("cliente_1").style.display = "none";
+            }else {
+                document.getElementById("cliente_1").style.display = "block";
+            }
+
+            var dd2 = document.getElementById("cliente_input");
+            var selectedValue = dd2.options[dd2.selectedIndex].value;
+                if (selectedValue == 1)
+            {
+                document.getElementById("admin_1").style.display = "none";
+            }else {
+                document.getElementById("admin_1").style.display = "block";
+            }
+
+
+        } , 1000);
+</script>
     <div class="container">
         <div class="login-box">
             <h2>Cadastro de Usuários</h2>
@@ -217,16 +248,23 @@ body {
                 <input type="text" name="password" required> <br/>
                 <label for="">Senha</label> <br/>
               </div>
-              <div class="user-box">
-                <input type="text" name="cliente" required> <br/>
-                <label for="">cliente</label> <br/>
-              </div>
-              <div class="user-box">
-                <input type="text" name="admin" required> <br/>
-                <label for="">admin</label> <br/>
-              </div>
 
-
+              <div id="permissao" class="user-box">
+               <div class="select" id="admin_1">
+                    <label for="cliente">Usuário Admin</label>
+                    <select id="admin_input"name="admin">
+                            <option value="0" selected>Não</option>
+                            <option value="1">Sim</option>
+                    </select>
+               </div>
+               <div class="select" id="cliente_1">
+                    <label for="cliente">Usuário Cliente</label>
+                    <select id="cliente_input" name="cliente">
+                            <option value="0" >Não</option>
+                            <option value="1" selected>Sim</option>
+                    </select>
+                </div>
+              </div>
               <span></span>
               <span></span>
               <span></span>
