@@ -39,6 +39,7 @@ class LocacaoController extends Controller
             'data_final' => $request->data_final,
             'devolucao_usuario' => '',
             'devolucao_admin' => '',
+            'dvd_devolvido' =>'',
 
         ]);
         $dvd = Dvd::findOrFail($request->id_filme);
@@ -74,10 +75,14 @@ class LocacaoController extends Controller
 
         $locacao->update([
             'devolucao_admin'=>$request->devolucao_admin,
+            'dvd_devolvido' => "devolvido",
         ]);
+
         #dd($locacao['devolucao_usuario']);
         if(($locacao['devolucao_usuario'] =='sim')&&($locacao['devolucao_admin'] =='sim')){
-            $locacao->delete();
+            $locacao->update([
+                'dvd_devolvido' => "devolvido",
+            ]);
         }
 
 

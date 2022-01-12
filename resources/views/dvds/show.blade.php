@@ -382,30 +382,37 @@ button {
                                 <input type="text" name="data_final"value="{{date('Y-m-d H:i:s', strtotime("+15 days",strtotime($data)))}}" required>
                                 <input type="text" name="quantidade" value="{{$dvd->quantidade = $dvd->quantidade-1}}" required>
                                 <input type="text" name="id_filme" value="{{$dvd->id}}" required>
-                                <?php
+                                <?php $valida='';
                                 if ($dvd->quantidade <= 0) {
-
                                 ?>
-
                                       <p>Indisponivel</p>
                                   <?php }else{ ?>
-                                    @foreach ($locacao as $i)
-                                    <?php
+                                        @foreach ($locacao as $i)
+                                        <?php
 
-                                      if(($dvd->nome == $i["nome_filme"]) &&(auth()->user()->name == $i["nome_locador"])){
-                                        $valida= $i["nome_filme"];
-                                      }else{
-                                        $valida= 'vazio';
-                                      }
-                                    ?>
-                                    @endforeach
-                                    <?php
+                                        if(($dvd->nome == $i["nome_filme"]) &&(auth()->user()->name == $i["nome_locador"])){
 
-                                    if($valida==$dvd->nome){ ?>
-                                      <p>Você ja alugou este DVD</p>
-                                    <?php }else{?>
-                                      <button>Alugar</button>
-                                    <?php }
+                                            $valida= $i["nome_filme"];
+                                            if($i["dvd_devolvido"]=='devolvido'){
+                                                $valida='';
+                                            }
+                                            #echo $valida;
+                                            #echo 'if ';
+                                        }
+                                        #else{
+                                          #  $valida= 'vazio';
+                                           # echo $valida;
+                                           # echo ' else ';
+                                       # }
+                                        ?>
+                                        @endforeach
+                                        <?php
+
+                                        if($valida==$dvd->nome){ ?>
+                                            <p>Você ja alugou este DVD</p>
+                                        <?php }else{?>
+                                            <button>Alugar</button>
+                                        <?php }
                                      }?>
                             </form>
                     </div>
