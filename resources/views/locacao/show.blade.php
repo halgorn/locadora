@@ -126,15 +126,20 @@ h1, h2, p, span,a{
             <table>
                 <thead>
                     <tr>
-                        <th>Nome Locador</th>
-                        <th>Nome Filme</th>
-                        <th>Data Locação</th>
-                        <th>Data Devolução</th>
+                        <?php if(auth()->user()->admin==1): ?>
+                            <th>Nome Locador</th>
+                            <th>Nome Filme</th>
+                            <th>Data Locação</th>
+                            <th>Data Devolução</th>
+                        <?php endif ?>
                         <?php if(auth()->user()->cliente==1): ?>
-                        <th>Antecipar Devolução</th>
+                            <th>Nome Filme</th>
+                            <th>Data Locação</th>
+                            <th>Data Devolução</th>
+                            <th>Antecipar Devolução</th>
                         <?php endif ?>
                         <?php if(auth()->user()->admin==1): ?>
-                        <th>Confirmação da devolução</th>
+                            <th>Confirmação da devolução</th>
                         <?php endif ?>
                     </tr>
                 </thead>
@@ -143,25 +148,44 @@ h1, h2, p, span,a{
                     <tr>
                         <?php if(auth()->user()->admin==1): ?>
                             <td>{{$l->nome_locador}}</td>
+                            <td>{{$l->nome_filme}}</td>
+                            <td>{{$l->data_inicial}}</td>
+                            <?php
+                                $data = date('d-m-Y');
+                                $data = strtotime($data);
+                                $data2 = strtotime($l->data_final);
+                            if( $data >$data2){ ?>
+                                <td style="color:red;">{{$l->data_final}} - DVD em atraso</td>
+                            <?php  } else{ ?>
+                            <td>{{$l->data_final}}</td>
+                            <?php  }  ?>
                         <?php endif ?>
 
                         <?php if(auth()->user()->cliente==1): ?>
-                            <?php if(auth()->user()->name == $l->nome_locador): ?>
-                                <td>{{$l->nome_locador}}</td>
+                            <?php if(str_contains($l->nome_locador, auth()->user()->name)): ?>
+                                <td>{{$l->nome_filme}}</td>
+                                <td>{{$l->data_inicial}}</td>
+                              <?php
+                                     $data = date('d-m-Y');
+                                     $data = strtotime($data);
+                                     $data2 = strtotime($l->data_final);
+                                    if( $data >$data2){ ?>
+                                        <td style="color:red;">{{$l->data_final}} - DVD em atraso</td>
+                                    <?php  } else{ ?>
+                                    <td>{{$l->data_final}}</td>
+                                    <?php  }  ?>
+
                             <?php endif ?>
                         <?php endif ?>
-                        <td>{{$l->nome_filme}}</td>
-                        <td>{{$l->data_inicial}}</td>
-                        <td>{{$l->data_final}}</td>
-
                        <?php if(auth()->user()->cliente==1): ?>
+                            <?php if(str_contains($l->nome_locador, auth()->user()->name)): ?>
                             <td> <a href="{{ route('devolucao_user', ['id'=>$l->id])}}"
-                                title="Editar dvd {{$l->nome_filme}}">Antecipar</a></td> ?>
+                                title="Editar dvd {{$l->nome_filme}}">Antecipar</a></td>
+                            <?php endif ?>
                         <?php endif ?>
                         <?php if(auth()->user()->admin==1): ?>
                             <td> <a href="{{ route('devolucao_admin', ['id'=>$l->id])}}"
-                                title="Editar dvd {{$l->nome_filme}}">Confirmar Admin</a></td> ?>
-
+                                title="Editar dvd {{$l->nome_filme}}">Confirmar Admin</a></td>
                         <?php endif ?>
                     </tr>
                     @endforeach
